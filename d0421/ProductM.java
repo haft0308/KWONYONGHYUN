@@ -8,7 +8,7 @@ public class ProductM {
 		Buyer b = new Buyer(); //Buyer 인스턴스 생성
 		Product[] p = new Product[3]; // Product 배열 초기화
 		// [] p에 할당
-		p[0] = new TV(); 
+		p[0] = new TV();  //업캐스팅
 		p[1] = new Com();
 		p[2] = new Audio();
 		
@@ -16,6 +16,21 @@ public class ProductM {
 			b.buy(i); // 순서대로 p구매
 		}
 		b.prt(); // 출력
+		((TV) p[0]).volumn=5;
+		Product p2 = new Com();
+		
+		
+		Com c10 = (Com) p2;
+		System.out.println(c10.cpu);
+		System.out.println(c10.ram);
+		
+		Buyer b2 = new Buyer();
+		TV tv = new TV();		
+		b2.buy(tv);
+		b2.buy(tv);
+		b2.buy(p[1]);
+		b2.buy(p[2]);
+		
 	}
 
 }
@@ -66,6 +81,7 @@ class Buyer
 	{
 		money -= p.price; // 돈을 p의 돈만큼 뺌
 		bonus += p.bonus; // 보너스를 p.bonus만큼 더함
+		prt();
 	}
 	void prt() // 변수출력
 	{
